@@ -65,7 +65,8 @@ The script performs the following steps:
 
 For questions or further discussions, please contact me at [syed4000saad@gmail.com](mailto:syed4000saad@gmail.com). 
 
-Here's a README file you can use for your GitHub project:
+## Contributing
+Feel free to submit issues or pull requests for improvements.
 
 ## References
 
