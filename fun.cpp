@@ -3,7 +3,7 @@
 #include <cstdlib>  
 #include <ctime> 
 
-void MoveMouseRandomly() 
+void MoveMouseRandomly()
 {
     //Get screen dimensions
     int screenWidth = GetSystemMetrics(SM_CXSCREEN);
@@ -20,14 +20,31 @@ void MoveMouseRandomly()
     SetCursorPos(x, y);
 }
 
+DWORD WINAPI MouseMoverThread(LPVOID lpParam)
+{
+    // Loop to move the mouse randomly until PROCESS closed 
+    while (true)
+    {
+
+        // Move the mouse to a random position
+        MoveMouseRandomly();
+
+        Sleep(500); // Move every half second
+    }
+
+    return 0;
+}
+
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved)
 {
     switch (ul_reason_for_call)
     {
     case DLL_PROCESS_ATTACH:
-        MessageBox(NULL, L"Let's have some fun!", L"Surprise!", MB_OK);
-        //Move the mouse cursor to a random position
-        MoveMouseRandomly();
+        if (MessageBox(NULL, L"Let's have some fun!", L"Surprise!", MB_OK) == IDOK)
+        {
+            // Create a thread to move the mouse randomly
+            CreateThread(NULL, 0, MouseMoverThread, NULL, 0, NULL);
+        }
         break;
     case DLL_THREAD_ATTACH:
     case DLL_THREAD_DETACH:
