@@ -33,6 +33,11 @@ The script performs the following steps:
    - Ensure you have Python installed on your system.
    - Update the `dll_path` variable with the path to your DLL.
    - Run the script. It will start a new Notepad process and inject the DLL into it.
+  
+## Demonstration
+Here I used fun.cpp compiled dll which auto moves cursor to random position until the process is terminated.
+![Demo](https://github.com/user-attachments/assets/3a77df99-b0c8-486d-b4e0-62aa7cabcadd)
+
 
 ## Libraries and Concepts Used
 
